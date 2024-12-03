@@ -1,13 +1,14 @@
 <template>
   <v-app>
+    <NavBar />
     <v-main>
       <router-view />
     </v-main>
 
-    <AppFooter />
+    <!-- <AppFooter /> -->
   </v-app>
 </template>
 
 <script setup>
-  //
+//
 </script>
