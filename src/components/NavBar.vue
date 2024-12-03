@@ -6,11 +6,13 @@
           <v-row class="d-flex align-center w-100">
             <v-col cols="12" class="d-flex align-center justify-start">
               <v-avatar style="margin-right: 16px">
-                <v-img
-                  width="48px"
-                  height="48px"
-                  src="https://foodhub-nuxt.vercel.app/_nuxt/img/logo.4a3964e.png"
-                />
+                <router-link to="/">
+                  <v-img
+                    width="48px"
+                    height="48px"
+                    src="https://foodhub-nuxt.vercel.app/_nuxt/img/logo.4a3964e.png"
+                  />
+                </router-link>
               </v-avatar>
 
               <template v-if="isLargeScreen">
@@ -21,10 +23,10 @@
         </v-col>
         <v-col class="d-flex align-center justify-end flex-nowrap" cols="5">
           <!-- <v-btn prepend-icon="mdi-account-circle-outline"> ACCOUNT </v-btn> -->
-          <v-btn prepend-icon="mdi-account-circle-outline">
+          <v-btn prepend-icon="mdi-account-circle-outline" variant="flat">
             <span class="hidden-text">ACCOUNT</span>
           </v-btn>
-          <v-btn prepend-icon="mdi-cart-outline"> (dc) </v-btn>
+          <v-btn prepend-icon="mdi-cart-outline" variant="flat"> (dc) </v-btn>
           <v-app-bar-nav-icon @click="qqq" />
         </v-col>
       </v-row>
