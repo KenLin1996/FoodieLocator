@@ -1,6 +1,6 @@
 <template>
   <v-app-bar class="w-100 position-fixed" scroll-behavior="elevate">
-    <v-container>
+    <!-- <v-container>
       <v-row class="d-flex justify-space-between align-center">
         <v-col cols="7">
           <v-row class="d-flex align-center w-100">
@@ -22,7 +22,6 @@
           </v-row>
         </v-col>
         <v-col class="d-flex align-center justify-end flex-nowrap" cols="5">
-          <!-- <v-btn prepend-icon="mdi-account-circle-outline"> ACCOUNT </v-btn> -->
           <v-btn prepend-icon="mdi-account-circle-outline" variant="flat">
             <span class="hidden-text">ACCOUNT</span>
           </v-btn>
@@ -30,11 +29,13 @@
           <v-app-bar-nav-icon @click="qqq" />
         </v-col>
       </v-row>
-    </v-container>
+    </v-container> -->
+    <NavBarItem />
   </v-app-bar>
 </template>
 <script setup>
-import SearchItem from "./SearchItem.vue";
+import NavBarItem from "./NavBarItem.vue";
+// import SearchItem from "./SearchItem.vue";
 import { ref, onMounted, onBeforeUnmount } from "vue";
 
 const isLargeScreen = ref(window.innerWidth >= 960);
