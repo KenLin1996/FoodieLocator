@@ -86,32 +86,66 @@
         </v-row>
       </v-container>
     </div>
-    <v-container>
+    <v-container class="py-15">
       <v-row>
         <v-col cols="12">
           <h2>Collections</h2>
           <h6 class="d-flex justify-space-between align-center flex-wrap">
-            <span style="color: #9e9e9e; font-size: 14px">
+            <span style="color: #9e9e9e; font-size: 14px; font-weight: 400">
               Explore curated lists of top restaurants, cafes, pubs, and bars in
               New York, based on trends
             </span>
-            <span style="color: #d23f57; font-size: 16px">
+            <RouterLink style="color: #d23f57; font-size: 16px">
               View all collections
-            </span>
+            </RouterLink>
           </h6>
         </v-col>
-        <v-col sm="6" md="4" lg="3" cols="12"> 2 </v-col>
-        <v-col sm="6" md="4" lg="3" cols="12"> 3 </v-col>
-        <v-col sm="6" md="4" lg="3" cols="12"> 4 </v-col>
-        <v-col sm="6" md="4" lg="3" cols="12"> 5 </v-col>
+
+        <v-col
+          v-for="(item, index) in collections"
+          :key="index"
+          sm="6"
+          md="4"
+          lg="3"
+          cols="12"
+        >
+          <ProductCardB :item="item" />
+        </v-col>
+      </v-row>
+    </v-container>
+    <v-container class="py-15">
+      <v-row>
+        <v-col cols="12">
+          <h2>Browse By Cuisine</h2>
+        </v-col>
+
+        <v-col
+          v-for="(item, index) in cuisines"
+          :key="index"
+          class="text-center"
+          sm="6"
+          md="4"
+          lg="2"
+          cols="12"
+        >
+          <router-link :to="item.to">
+            <v-avatar class="mb-4" size="150">
+              <v-img :src="item.img" />
+            </v-avatar>
+            <h4 style="font-size: 17px; color: #616161">
+              {{ item.name }}
+            </h4>
+          </router-link>
+        </v-col>
       </v-row>
     </v-container>
   </div>
 </template>
 
 <script setup>
-import NavBarItem from "@/components/NavBarItem.vue";
-import ProductCardA from "@/components/ProductCardA.vue";
+import NavBarItem from "@/components/navbar/NavBarItem.vue";
+import ProductCardA from "@/components/productCard/ProductCardA.vue";
+import ProductCardB from "@/components/productCard/ProductCardB.vue";
 import { ref } from "vue";
 
 const showSearch = ref(false);
@@ -127,7 +161,6 @@ const lifestyles = [
     img: "https://foodhub-nuxt.vercel.app/_nuxt/img/16.bbc24cb.jpg",
     name: "Go Out For Meal",
     showLifestyle: true,
-
     to: "/",
   },
   {
@@ -146,6 +179,66 @@ const lifestyles = [
   },
 ];
 
+const collections = [
+  {
+    img: "https://media.istockphoto.com/id/1454217037/zh/%E7%85%A7%E7%89%87/statue-of-liberty-and-new-york-city-skyline-with-manhattan-financial-district-world-trade-center.jpg?s=612x612&w=0&k=20&c=9ZeEQ6sBuQGdpIbE-_EbaiFSSjvV2mBGK0DQOjY1DG0=",
+    name: "Best Of New York",
+    count: 26,
+    to: "",
+  },
+  {
+    img: "https://media.istockphoto.com/id/1369814693/photo/los-angeles.jpg?s=612x612&w=0&k=20&c=DFV2MZegN9dGw--BF-24os350UwlrCgs25x93AH99Do=",
+    name: "Best Of Los Angeles",
+    count: 14,
+    to: "",
+  },
+  {
+    img: "https://www.shutterstock.com/image-photo/chicago-illinois-usa-on-lake-600nw-2421911865.jpg",
+    name: "Best Of Chicago",
+    count: 10,
+    to: "",
+  },
+  {
+    img: "https://heritageclubthc.com/wp-content/uploads/2023/08/iStock-1363707600.jpg",
+    name: "Best Of Boston",
+    count: 20,
+    to: "",
+  },
+];
+
+const cuisines = [
+  {
+    img: "https://foodhub-nuxt.vercel.app/_nuxt/img/9.1c1a4aa.png",
+    name: "Italian",
+    to: "",
+  },
+  {
+    img: "https://foodhub-nuxt.vercel.app/_nuxt/img/10.4b83261.png",
+    name: "Chinesse",
+    to: "",
+  },
+  {
+    img: "https://foodhub-nuxt.vercel.app/_nuxt/img/11.53f677b.png",
+    name: "Japanesse",
+    to: "",
+  },
+  {
+    img: "https://foodhub-nuxt.vercel.app/_nuxt/img/12.95a2711.png",
+    name: "Indian",
+    to: "",
+  },
+  {
+    img: "https://foodhub-nuxt.vercel.app/_nuxt/img/13.b85d0c1.png",
+    name: "Thai Food",
+    to: "",
+  },
+  {
+    img: "https://foodhub-nuxt.vercel.app/_nuxt/img/14.05cff0f.png",
+    name: "Mexican",
+    to: "",
+  },
+];
+
 const menus = [
   {
     img: "https://foodhub-nuxt.vercel.app/_nuxt/img/15.15c95d2.jpg",
@@ -155,14 +248,11 @@ const menus = [
     category: "coffee",
     city: "New York",
     time: "8 - 10 min",
-    // hasDiscount: true,
-    // discount: 30,
     discount: {
       hasDiscount: true,
-      value: 30, // Percentage
+      value: 30,
     },
     to: "/",
   },
 ];
-//
 </script>

@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-//
+import NavBar from "@/components/navbar/NavBar.vue";
 import { ref, onMounted, onBeforeUnmount, watch } from "vue";
 import { useRoute } from "vue-router";
 

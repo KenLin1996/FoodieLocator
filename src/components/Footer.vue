@@ -174,9 +174,4 @@ const footerInfos = [
 ];
 </script>
 
-<style scoped lang="scss">
-a {
-  text-decoration: none;
-  color: black;
-}
-</style>
+<style scoped lang="scss"></style>

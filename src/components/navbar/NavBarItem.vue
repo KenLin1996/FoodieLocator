@@ -35,14 +35,13 @@
         </v-btn>
         <v-app-bar-nav-icon
           :class="showSearch ? 'showSearch' : 'navIconColor'"
-          @click="qqq"
         />
       </v-col>
     </v-row>
   </v-container>
 </template>
 <script setup>
-import SearchItem from "./SearchItem.vue";
+import SearchItem from "../SearchItem.vue";
 import { ref, onMounted, onBeforeUnmount, defineProps } from "vue";
 
 const props = defineProps({
@@ -68,9 +67,6 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener("resize", handleResize);
 });
-const qqq = () => {
-  alert("231");
-};
 </script>
 <style scoped>
 /* 螢幕寬度小於 960px 時隱藏 */
