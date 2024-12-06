@@ -2,7 +2,7 @@
   <router-link :to="item.to">
     <v-card class="mx-auto">
       <div class="position-relative">
-        <v-img :src="item.img" />
+        <v-img :src="item.img" cover />
         <template v-if="item.discount?.hasDiscount">
           <v-chip
             class="mt-3"
@@ -29,12 +29,13 @@
           class="pa-4 d-flex justify-space-between align-center"
         >
           <span
-            class="d-inline-block"
+            class="d-inline-block text-truncate me-3"
             style="font-size: 18px; font-weight: 500"
           >
             {{ item.name }}
           </span>
-          <div class="d-flex align-center">
+
+          <div class="d-flex align-center flex-nowrap">
             <v-rating
               :model-value="1"
               :length="1"
@@ -44,18 +45,18 @@
               half-increments
               readonly
             />
-            <div>{{ item.rate }} <span class="text-grey">/5</span></div>
+            <span>{{ item.rate }}</span> <span class="text-grey">/5</span>
           </div>
         </div>
         <div id="cardContent" class="px-4 grey--text text--darken-1 mb-4">
           <p class="d-flex justify-space-between align-center">
-            <span class="me-1" style="color: #d23f57"> ${{ item.cost }} </span>
+            <span class="me-1" style="color: #d23f57"> ${{ item.price }} </span>
             <span style="color: #757575">
               • {{ item.category }}, {{ item.city }}
             </span>
           </p>
           <p>
-            <span style="color: #757575">• {{ item.time }}</span>
+            <span style="color: #757575">• {{ item.time }} min</span>
           </p>
         </div>
       </template>

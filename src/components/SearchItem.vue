@@ -14,10 +14,10 @@
     />
 
     <v-text-field
-      label="Search for restaurant"
+      style="padding: 0px !important"
       placeholder="Search for restaurant"
       density="compact"
-      variant="text"
+      variant="plain"
       hide-details
       single-line
     />

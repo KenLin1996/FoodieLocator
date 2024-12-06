@@ -42,14 +42,14 @@
                 class="rounded-0 theme--light"
                 height="40"
               >
-                My Location
+                Location
               </v-btn>
 
               <v-text-field
                 label="Search for restaurant"
                 placeholder="Search for restaurant"
                 density="compact"
-                variant="text"
+                variant="plain"
                 hide-details
                 single-line
                 style="width: 210px"
@@ -95,9 +95,9 @@
               Explore curated lists of top restaurants, cafes, pubs, and bars in
               New York, based on trends
             </span>
-            <RouterLink style="color: #d23f57; font-size: 16px">
+            <router-link to="/" style="color: #d23f57; font-size: 16px">
               View all collections
-            </RouterLink>
+            </router-link>
           </h6>
         </v-col>
 
@@ -139,6 +139,95 @@
         </v-col>
       </v-row>
     </v-container>
+    <v-container class="py-15">
+      <v-row>
+        <v-col cols="12">
+          <h2>Popular Near You</h2>
+        </v-col>
+        <v-col
+          v-for="(item, index) in menus"
+          :key="index"
+          sm="6"
+          md="4"
+          lg="3"
+          cols="12"
+        >
+          <ProductCardA :item="item" />
+        </v-col>
+      </v-row>
+    </v-container>
+    <div class="w-100 py-16" style="background-color: #f6f9fc">
+      <v-container class="mx-auto">
+        <v-row class="d-flex justify-center align-center">
+          <v-col
+            sm="4"
+            md="3"
+            lg="3"
+            cols="12"
+            class="text-sm-right text-md-right text-lg-right text-center"
+          >
+            <v-img
+              class="d-inline-block"
+              src="https://foodhub-nuxt.vercel.app/_nuxt/img/App.4927ff9.png"
+              cover
+              width="185"
+            />
+          </v-col>
+          <v-col sm="8" md="9" lg="9" cols="12" style="max-width: 563px">
+            <h1 style="font-size: 40px">Get the Mobile App</h1>
+            <p style="font-size: 18px; color: #757575">
+              We will send you a link, open it on your phone to download the app
+            </p>
+            <v-radio-group inline hide-details class="my-4">
+              <v-radio label="Email" value="Email" color="red" class="mr-4" />
+              <v-radio label="Phone" value="Phone" color="red" />
+            </v-radio-group>
+            <div
+              class="d-flex align-center mb-8 mx-auto flex-nowrap"
+              style="
+                background: #fff;
+                border-radius: 4px;
+                border: 1px solid #d9e1e6;
+              "
+            >
+              <v-text-field
+                label="Email"
+                placeholder="Email"
+                density="compact"
+                variant="plain"
+                hide-details
+                single-line
+                style="width: 210px"
+              />
+              <v-btn
+                height="40"
+                class="rounded-0 rounded-te rounded-be"
+                density="default"
+                variant="text"
+                style="color: #fff; background-color: #d23f57"
+              >
+                Search
+              </v-btn>
+            </div>
+            <h6 class="mb-4" style="font-size: 14px; color: #9e9e9e">
+              Download App from
+            </h6>
+            <div>
+              <v-avatar class="rounded me-4" style="width: 120px; height: 45px">
+                <v-img
+                  src="https://foodhub-nuxt.vercel.app/_nuxt/img/google-play.430ca54.png"
+                />
+              </v-avatar>
+              <v-avatar class="rounded" style="width: 120px; height: 45px">
+                <v-img
+                  src="https://foodhub-nuxt.vercel.app/_nuxt/img/app-store.63e3986.png"
+                />
+              </v-avatar>
+            </div>
+          </v-col>
+        </v-row>
+      </v-container>
+    </div>
   </div>
 </template>
 
@@ -241,13 +330,111 @@ const cuisines = [
 
 const menus = [
   {
-    img: "https://foodhub-nuxt.vercel.app/_nuxt/img/15.15c95d2.jpg",
-    name: "Starbuckss",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_qcvQkilIuzWmKjUBi08r-ktFF3n_2X-BgA&s",
+    name: "New York Cheesecake",
     rate: 4.5,
-    cost: 20,
-    category: "coffee",
+    price: 29.95,
+    category: "Desserts",
     city: "New York",
-    time: "8 - 10 min",
+    time: "3 - 5",
+    discount: {
+      hasDiscount: true,
+      value: 65,
+    },
+    to: "/",
+  },
+  {
+    img: "https://foodhub-nuxt.vercel.app/_nuxt/img/16.bbc24cb.jpg",
+    name: "California Roll",
+    rate: 4.5,
+    price: 10,
+    category: "Sushi",
+    city: "Los Angeles",
+    time: "3 - 5",
+    discount: {
+      hasDiscount: true,
+      value: 60,
+    },
+    to: "/",
+  },
+  {
+    img: "https://t3.ftcdn.net/jpg/09/46/66/06/360_F_946660682_g6fHbVm33zRMHe9H3f0WDoi3fiupcKRW.jpg",
+    name: "New York-style Pizza",
+    rate: 4.5,
+    price: 33.65,
+    category: "Pizza",
+    city: "New York",
+    time: "3 - 5",
+    discount: {
+      hasDiscount: false,
+      value: 30,
+    },
+    to: "/",
+  },
+  {
+    img: "https://www.mystateline.com/wp-content/uploads/sites/17/2023/02/AdobeStock_61641020_Preview.jpeg?w=1280",
+    name: "Italian Beef Sandwich",
+    rate: 4.5,
+    price: 24,
+    category: "Sandwiches",
+    city: "Chicago",
+    time: "8 - 10",
+    discount: {
+      hasDiscount: true,
+      value: 55,
+    },
+    to: "/",
+  },
+  {
+    img: "https://static.vecteezy.com/system/resources/previews/027/537/012/non_2x/a-boston-cream-pie-with-chocolate-icing-on-a-plate-ai-generated-free-photo.jpeg",
+    name: "Boston Cream Pie",
+    rate: 4,
+    price: 18.95,
+    category: "Desserts",
+    city: "Boston",
+    time: "8 - 10",
+    discount: {
+      hasDiscount: true,
+      value: 30,
+    },
+    to: "/",
+  },
+  {
+    img: "https://img.freepik.com/premium-photo/kolaches-filled-with-seasonal-fruits-yummy-delicious-kolaches-food-image-photography_1295756-183696.jpg",
+    name: "Kolaches",
+    rate: 4,
+    price: 2.99,
+    category: "Baking",
+    city: "Houston",
+    time: "8 - 10",
+    discount: {
+      hasDiscount: false,
+      value: 30,
+    },
+    to: "/",
+  },
+  {
+    img: "https://img.freepik.com/premium-photo/chicagostyle-deep-dish-pizza-thick-crust-with-cheese-chunky-tomato-sauce_818261-25460.jpg",
+    name: "Deep-Dish Pizza",
+    rate: 3.5,
+    price: 9.99,
+    category: "Pizza",
+    city: "Chicago",
+    time: "15 - 20",
+    discount: {
+      hasDiscount: false,
+      value: 30,
+    },
+    to: "/",
+  },
+  {
+    img: "https://d-mars.com/wp-content/uploads/2024/05/iStock-172410532-1.jpg",
+    name: "Pecan Pie",
+    rate: 3,
+    price: 45,
+    category: "Desserts",
+    city: "Houston",
+    time: "15 - 20",
     discount: {
       hasDiscount: true,
       value: 30,

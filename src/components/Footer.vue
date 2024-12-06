@@ -1,14 +1,35 @@
 <template>
   <v-footer class="d-flex flex-column" app>
-    <v-container class="w-100" style="padding: 64px 0px">
+    <v-container
+      class="w-100"
+      style="padding: 64px 0px"
+    >
       <v-row>
         <v-col cols="12">
-          <h2 class="mb-5">Popular Localities In & Around New York</h2>
+          <h2 class="mb-5">
+            Popular Localities In & Around New York
+          </h2>
           <v-row>
-            <template v-for="n in 4" :key="n">
-              <v-col class="mb-3" sm="6" md="6" lg="3" xl="3" cols="12">
-                <template v-for="(city, i) in citys" :key="i">
-                  <div class="mb-3" :to="city.to">
+            <template
+              v-for="n in 4"
+              :key="n"
+            >
+              <v-col
+                class="mb-3"
+                sm="6"
+                md="6"
+                lg="3"
+                xl="3"
+                cols="12"
+              >
+                <template
+                  v-for="(city, i) in citys"
+                  :key="i"
+                >
+                  <div 
+                    class="mb-3" 
+                    :to="city.to"
+                  >
                     <router-link :to="city.to">
                       {{ city.name }}
                       <span style="color: #9e9e9e">
@@ -23,10 +44,19 @@
         </v-col>
       </v-row>
     </v-container>
-    <div class="w-100" style="background-color: #f6f9fc">
-      <v-container class="w-100" style="padding: 64px 0px">
+    <div 
+      class="w-100" 
+      style="background-color: #f6f9fc"
+    >
+      <v-container 
+        class="w-100" 
+        style="padding: 64px 0px"
+      >
         <v-row>
-          <v-col cols="12" lg="3">
+          <v-col 
+            cols="12" 
+            lg="3"
+          >
             <router-link to="/">
               <v-avatar
                 class="mb-6"
@@ -43,23 +73,32 @@
               et lectus vel ut sollicitudin elit at amet.
             </h5>
             <div>
-              <v-avatar
-                class="rounded-0 me-4"
+              <v-avatar 
+                class="rounded me-4" 
                 style="width: 120px; height: 45px"
               >
                 <v-img
                   src="https://foodhub-nuxt.vercel.app/_nuxt/img/google-play.430ca54.png"
                 />
               </v-avatar>
-              <v-avatar class="rounded-0" style="width: 120px; height: 45px">
+              <v-avatar 
+                class="rounded" 
+                style="width: 120px; height: 45px"
+              >
                 <v-img
                   src="https://foodhub-nuxt.vercel.app/_nuxt/img/app-store.63e3986.png"
                 />
               </v-avatar>
             </div>
           </v-col>
-          <template v-for="info in footerInfos" :key="info.name">
-            <v-col cols="12" lg="3">
+          <template
+            v-for="info in footerInfos" 
+            :key="info.name"
+          >
+            <v-col 
+              cols="12" 
+              lg="3"
+            >
               <h2 style="margin-bottom: 16px">
                 {{ info.name }}
               </h2>
@@ -69,12 +108,18 @@
                 class="d-flex flex-column"
                 style="margin-bottom: 12px"
               >
-                <router-link :to="item.to">
+                <router-link 
+                  v-if="item.to" 
+                  :to="item.to"
+                >
                   {{ item.name }}
                 </router-link>
 
                 <div class="d-flex flex-row flex-wrap">
-                  <template v-for="i in item.mediaIcons" :key="i.icon">
+                  <template 
+                    v-for="i in item.mediaIcons" 
+                    :key="i.icon"
+                  >
                     <v-btn
                       class="me-2"
                       theme="dark"
@@ -166,7 +211,7 @@ const footerInfos = [
           { icon: "mdi-twitter", to: "/" },
           { icon: "mdi-instagram", to: "/" },
           { icon: "mdi-youtube", to: "/" },
-          { icon: "mdi-google", to: "/resturant/FoodMenu" },
+          { icon: "mdi-google", to: "/" },
         ],
       },
     ],
