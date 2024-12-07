@@ -3,7 +3,11 @@
     class="d-flex justify-center align-center"
     style="border: 1px solid #d9e1e6; border-radius: 4px; min-width: 468px"
   >
-    <v-btn prepend-icon="mdi-map-marker" variant="plain" disabled>
+    <v-btn 
+      prepend-icon="mdi-map-marker" 
+      variant="plain" 
+      disabled
+    >
       New York
     </v-btn>
 
@@ -21,8 +25,15 @@
       hide-details
       single-line
     />
-    <v-btn class="rounded-0" icon="mdi-magnify" />
+    <v-btn 
+      class="rounded-0" 
+      icon="mdi-magnify" 
+    />
   </div>
 </template>
 <script setup></script>
-<style scoped></style>
+<style scoped>
+::v-deep .v-field__input{
+  padding: 0px !important;
+}
+</style>
