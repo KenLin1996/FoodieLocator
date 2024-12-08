@@ -1,3 +1,4 @@
+<!-- 直立商品卡 -->
 <template>
   <router-link :to="item.to">
     <v-card class="mx-auto">

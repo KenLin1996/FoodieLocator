@@ -1,3 +1,4 @@
+<!-- Collections 卡片 -->
 <template>
   <router-link :to="item.to">
     <v-card>

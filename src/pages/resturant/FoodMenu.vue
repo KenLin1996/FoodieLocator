@@ -1,10 +1,12 @@
 <template>
   <v-container>
+    <!-- 麵包屑 -->
     <v-breadcrumbs :items="items" class="px-0">
       <template #divider>
         <v-icon icon="mdi-chevron-right" />
       </template>
     </v-breadcrumbs>
+    <!-- 商品圖片 ＆ 商家資訊 -->
     <v-row>
       <v-col lg="6" cols="12" class="py-1 pr-1">
         <v-img
@@ -45,6 +47,8 @@
           </v-col>
         </v-row>
       </v-col>
+
+      <!-- 商家資訊 -->
       <v-col class="mt-4 py-0 pr-0" cols="12">
         <div
           class="d-flex justify-space-between flex-wrap align-center mb-3 py-0"
@@ -107,6 +111,8 @@
         </div>
       </v-col>
     </v-row>
+
+    <!-- 商家服務：線上點餐、預約、評論 -->
     <div>
       <v-tabs
         v-model="tab"
@@ -134,12 +140,39 @@
       </v-tabs-window>
     </div>
   </v-container>
+
+  <!-- 在 ProductCardC 的 Categories 按鈕觸發的側邊欄 -->
+  <v-navigation-drawer
+    v-model="drawer"
+    temporary
+    :width="260"
+    class="position-fixed"
+    style="z-index: 3006; top: 0; height: 100%; padding: 20px"
+  >
+    <div class="d-flex align-center justify-end">
+      <v-btn icon="mdi-close" variant="text" @click="drawer = !drawer" />
+    </div>
+
+    <v-list-item
+      v-for="(item, index) in tabs"
+      :key="index"
+      :value="item"
+      class="pa-0 w-100 d-inline-block mb-5"
+      :class="{
+        'selected-item': selectedIndex === index,
+      }"
+      style="min-height: 0px"
+      @click="selectTab(index)"
+    >
+      {{ item.name }}
+    </v-list-item>
+  </v-navigation-drawer>
 </template>
 <script setup>
 import BookATable from "@/components/tabsWindows/BookATable.vue";
 import OrderOnline from "@/components/tabsWindows/OrderOnline.vue";
 import Reviews from "@/components/tabsWindows/Reviews.vue";
-import { ref } from "vue";
+import { ref, provide, onMounted, onBeforeUnmount } from "vue";
 import { definePage } from "vue-router/auto";
 
 definePage({
@@ -149,6 +182,7 @@ definePage({
 });
 
 const tab = ref("tab-1");
+// const orderTab = ref("option-0");
 
 const items = [
   {
@@ -167,4 +201,61 @@ const items = [
     href: "/resturant/FoodMenu",
   },
 ];
+
+const tabs = [
+  { name: "Recomended (4)", counts: 4 },
+  { name: "DPB Special Combos (1)", counts: 1 },
+  { name: "Chineese Starters (3)", counts: 3 },
+  { name: "Chinese Main Course (7)", counts: 7 },
+  { name: "Indian Main Course (6)", counts: 6 },
+  { name: "Rice & Pulao (7)", counts: 7 },
+  { name: "Desserts (1)", counts: 1 },
+  { name: "Soup & wonton (5)", counts: 5 },
+  { name: "Accompaniment (4)", counts: 4 },
+  { name: "Biryani (1)", counts: 1 },
+];
+
+const drawer = ref(false);
+provide("openSideBar", () => {
+  drawer.value = true;
+});
+
+const selectedIndex = ref(null); // 記錄被選中的 tab 的 index
+
+// 點擊選項時更新 selectedIndex
+const selectTab = (index) => {
+  selectedIndex.value = index;
+};
+
+// 設置根據螢幕寬度來控制 drawer 的邏輯
+const updateDrawer = () => {
+  // 當螢幕寬度大於等於 960px 時，設置 drawer 隱藏
+  if (window.innerWidth > 960) {
+    drawer.value = false; // 隱藏 Drawer
+  }
+};
+
+onMounted(() => {
+  // 頁面加載時檢查一次螢幕尺寸
+  updateDrawer();
+
+  // 監聽螢幕尺寸變化
+  window.addEventListener("resize", updateDrawer);
+});
+
+onBeforeUnmount(() => {
+  // 清除監聽器
+  window.removeEventListener("resize", updateDrawer);
+});
 </script>
+<style scoped lang="scss">
+::v-deep.v-navigation-drawer__scrim {
+  z-index: 990 !important;
+}
+
+.selected-item {
+  border-right: 3px solid #d23f57;
+
+  /* min-height: 0px; */
+}
+</style>

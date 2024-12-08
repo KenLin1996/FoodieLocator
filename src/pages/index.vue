@@ -27,20 +27,12 @@
           </v-col>
         </v-row>
         <v-row>
-          <v-col
-            class="mx-auto"
-            cols="12" 
-            lg="7"
-          >
+          <v-col class="mx-auto" cols="12" lg="7">
             <div
               class="d-flex align-center mb-15 mx-auto flex-wrap"
               style="background: #fff; border-radius: 4px"
             >
-              <v-btn
-                prepend-icon="mdi-map-marker" 
-                variant="plain" 
-                disabled
-              >
+              <v-btn prepend-icon="mdi-map-marker" variant="plain" disabled>
                 New York
               </v-btn>
 
@@ -67,6 +59,7 @@
                 density="default"
                 variant="text"
                 style="color: #fff; background-color: #d23f57"
+                to="/resturant/ResturantTwoColumn"
               >
                 Search
               </v-btn>
@@ -77,10 +70,7 @@
     </v-container>
   </div>
   <div class="content w-100">
-    <div 
-      class="bg w-100" 
-      style="background-color: #f6f9fc"
-    >
+    <div class="bg w-100" style="background-color: #f6f9fc">
       <v-container class="py-15">
         <v-row>
           <v-col
@@ -105,10 +95,7 @@
               Explore curated lists of top restaurants, cafes, pubs, and bars in
               New York, based on trends
             </span>
-            <router-link 
-              to="/" 
-              style="color: #d23f57; font-size: 16px"
-            >
+            <router-link to="/" style="color: #d23f57; font-size: 16px">
               View all collections
             </router-link>
           </h6>
@@ -142,10 +129,7 @@
           cols="12"
         >
           <router-link :to="item.to">
-            <v-avatar 
-              class="mb-4" 
-              size="150"
-            >
+            <v-avatar class="mb-4" size="150">
               <v-img :src="item.img" />
             </v-avatar>
             <h4 style="font-size: 17px; color: #616161">
@@ -172,10 +156,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <div 
-      class="w-100 py-16" 
-      style="background-color: #f6f9fc"
-    >
+    <div class="w-100 py-16" style="background-color: #f6f9fc">
       <v-container class="mx-auto">
         <v-row class="d-flex justify-center align-center">
           <v-col
@@ -192,35 +173,14 @@
               width="185"
             />
           </v-col>
-          <v-col
-            sm="8" 
-            md="9" 
-            lg="9" 
-            cols="12" 
-            style="max-width: 563px"
-          >
-            <h1 style="font-size: 40px">
-              Get the Mobile App
-            </h1>
+          <v-col sm="8" md="9" lg="9" cols="12" style="max-width: 563px">
+            <h1 style="font-size: 40px">Get the Mobile App</h1>
             <p style="font-size: 18px; color: #757575">
               We will send you a link, open it on your phone to download the app
             </p>
-            <v-radio-group
-              class="my-4"
-              inline 
-              hide-details 
-            >
-              <v-radio
-                label="Email" 
-                value="Email" 
-                color="red" 
-                class="mr-4" 
-              />
-              <v-radio 
-                label="Phone" 
-                value="Phone" 
-                color="red" 
-              />
+            <v-radio-group class="my-4" inline hide-details>
+              <v-radio label="Email" value="Email" color="red" class="mr-4" />
+              <v-radio label="Phone" value="Phone" color="red" />
             </v-radio-group>
             <div
               class="d-flex align-center mb-8 mx-auto flex-nowrap"
@@ -236,7 +196,7 @@
                 variant="plain"
                 hide-details
                 single-line
-                style="width: 210px; padding: 0px 12px;"
+                style="width: 210px; padding: 0px 12px"
               />
               <v-btn
                 height="40"
@@ -248,25 +208,16 @@
                 Search
               </v-btn>
             </div>
-            <h6 
-              class="mb-4" 
-              style="font-size: 14px; color: #9e9e9e"
-            >
+            <h6 class="mb-4" style="font-size: 14px; color: #9e9e9e">
               Download App from
             </h6>
             <div>
-              <v-avatar 
-                class="rounded me-4" 
-                style="width: 120px; height: 45px"
-              >
+              <v-avatar class="rounded me-4" style="width: 120px; height: 45px">
                 <v-img
                   src="https://foodhub-nuxt.vercel.app/_nuxt/img/google-play.430ca54.png"
                 />
               </v-avatar>
-              <v-avatar 
-                class="rounded" 
-                style="width: 120px; height: 45px"
-              >
+              <v-avatar class="rounded" style="width: 120px; height: 45px">
                 <v-img
                   src="https://foodhub-nuxt.vercel.app/_nuxt/img/app-store.63e3986.png"
                 />
@@ -280,7 +231,7 @@
 </template>
 
 <script setup>
-import { definePage }from"vue-router/auto"
+import { definePage } from "vue-router/auto";
 import NavBarItem from "@/components/navbar/NavBarItem.vue";
 import ProductCardA from "@/components/productCard/ProductCardA.vue";
 import ProductCardB from "@/components/productCard/ProductCardB.vue";
@@ -354,32 +305,32 @@ const cuisines = [
   {
     img: "https://foodhub-nuxt.vercel.app/_nuxt/img/9.1c1a4aa.png",
     name: "Italian",
-    to: "",
+    to: "/resturant/FoodMenu",
   },
   {
     img: "https://foodhub-nuxt.vercel.app/_nuxt/img/10.4b83261.png",
     name: "Chinesse",
-    to: "",
+    to: "/resturant/FoodMenu",
   },
   {
     img: "https://foodhub-nuxt.vercel.app/_nuxt/img/11.53f677b.png",
     name: "Japanesse",
-    to: "",
+    to: "/resturant/FoodMenu",
   },
   {
     img: "https://foodhub-nuxt.vercel.app/_nuxt/img/12.95a2711.png",
     name: "Indian",
-    to: "",
+    to: "/resturant/FoodMenu",
   },
   {
     img: "https://foodhub-nuxt.vercel.app/_nuxt/img/13.b85d0c1.png",
     name: "Thai Food",
-    to: "",
+    to: "/resturant/FoodMenu",
   },
   {
     img: "https://foodhub-nuxt.vercel.app/_nuxt/img/14.05cff0f.png",
     name: "Mexican",
-    to: "",
+    to: "/resturant/FoodMenu",
   },
 ];
 
@@ -396,7 +347,7 @@ const menus = [
       hasDiscount: true,
       value: 65,
     },
-    to: "/",
+    to: "/resturant/FoodMenu",
   },
   {
     img: "https://foodhub-nuxt.vercel.app/_nuxt/img/16.bbc24cb.jpg",
@@ -410,7 +361,7 @@ const menus = [
       hasDiscount: true,
       value: 60,
     },
-    to: "/",
+    to: "/resturant/FoodMenu",
   },
   {
     img: "https://t3.ftcdn.net/jpg/09/46/66/06/360_F_946660682_g6fHbVm33zRMHe9H3f0WDoi3fiupcKRW.jpg",
@@ -424,7 +375,7 @@ const menus = [
       hasDiscount: false,
       value: 30,
     },
-    to: "/",
+    to: "/resturant/FoodMenu",
   },
   {
     img: "https://www.mystateline.com/wp-content/uploads/sites/17/2023/02/AdobeStock_61641020_Preview.jpeg?w=1280",
@@ -438,7 +389,7 @@ const menus = [
       hasDiscount: true,
       value: 55,
     },
-    to: "/",
+    to: "/resturant/FoodMenu",
   },
   {
     img: "https://static.vecteezy.com/system/resources/previews/027/537/012/non_2x/a-boston-cream-pie-with-chocolate-icing-on-a-plate-ai-generated-free-photo.jpeg",
@@ -452,7 +403,7 @@ const menus = [
       hasDiscount: true,
       value: 30,
     },
-    to: "/",
+    to: "/resturant/FoodMenu",
   },
   {
     img: "https://img.freepik.com/premium-photo/kolaches-filled-with-seasonal-fruits-yummy-delicious-kolaches-food-image-photography_1295756-183696.jpg",
@@ -466,7 +417,7 @@ const menus = [
       hasDiscount: false,
       value: 30,
     },
-    to: "/",
+    to: "/resturant/FoodMenu",
   },
   {
     img: "https://img.freepik.com/premium-photo/chicagostyle-deep-dish-pizza-thick-crust-with-cheese-chunky-tomato-sauce_818261-25460.jpg",
@@ -480,7 +431,7 @@ const menus = [
       hasDiscount: false,
       value: 30,
     },
-    to: "/",
+    to: "/resturant/FoodMenu",
   },
   {
     img: "https://d-mars.com/wp-content/uploads/2024/05/iStock-172410532-1.jpg",
@@ -494,12 +445,12 @@ const menus = [
       hasDiscount: true,
       value: 30,
     },
-    to: "/",
+    to: "/resturant/FoodMenu",
   },
 ];
 </script>
 <style scoped lang="scss">
-::v-deep .v-field__input{
+::v-deep .v-field__input {
   padding: 0px !important;
 }
 </style>
