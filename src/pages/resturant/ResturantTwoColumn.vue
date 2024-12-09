@@ -18,11 +18,10 @@
         <v-tab value="option-2"> Dining Out </v-tab>
         <v-tab value="option-3"> Nightlife </v-tab>
       </v-tabs>
-      <!-- <div> -->
+
       <v-btn style="background-color: #d23f57; color: white" width="70">
         CLEAR
       </v-btn>
-      <!-- </div> -->
     </div>
     <v-row>
       <v-col xl="12" cols="12">
@@ -79,7 +78,7 @@
                 </div>
                 <div>
                   <h6 class="mb-10" style="font-size: 14px">Price Range</h6>
-                  <!-- <template> -->
+
                   <v-range-slider
                     v-model="range"
                     style="margin: 0px 20px"
@@ -88,7 +87,6 @@
                     color="#d23f57"
                     thumb-color="#d23f57"
                   />
-                  <!-- </template> -->
                 </div>
               </v-col>
               <v-col cols="12" sm="12" md="9" lg="9">
@@ -120,7 +118,6 @@
                 </v-row>
               </v-col>
             </v-row>
-            <!-- <div /> -->
           </v-tabs-window-item>
         </v-tabs-window>
       </v-col>

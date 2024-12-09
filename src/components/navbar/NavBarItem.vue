@@ -145,7 +145,6 @@
 import SearchItem from "../SearchItem.vue";
 import { ref, onMounted, onBeforeUnmount, defineProps } from "vue";
 
-// const dialog = ref(false);
 const dialog = ref(false);
 const account = ref();
 const visible = ref(false);

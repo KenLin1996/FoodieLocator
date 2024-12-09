@@ -71,22 +71,6 @@ const tabs = [
   { name: "Accompaniment (4)", counts: 4 },
   { name: "Biryani (1)", counts: 1 },
 ];
-
-// const recommends = {
-//   title: "Recommended",
-//   products: [
-//     {
-//       img: "",
-//       name: "",
-//       label: "",
-//       comments: 20,
-//       originalPrice: 25,
-//       salePrice: 22.5,
-//       discount: 10,
-//       note: "4 Pcs mutton in chicken keema gravy",
-//     },
-//   ],
-// };
 </script>
 <style scoped lang="scss">
 .v-tab-item--selected {

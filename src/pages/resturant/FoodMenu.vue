@@ -182,7 +182,6 @@ definePage({
 });
 
 const tab = ref("tab-1");
-// const orderTab = ref("option-0");
 
 const items = [
   {
@@ -236,15 +235,12 @@ const updateDrawer = () => {
 };
 
 onMounted(() => {
-  // 頁面加載時檢查一次螢幕尺寸
   updateDrawer();
-
   // 監聽螢幕尺寸變化
   window.addEventListener("resize", updateDrawer);
 });
 
 onBeforeUnmount(() => {
-  // 清除監聽器
   window.removeEventListener("resize", updateDrawer);
 });
 </script>
@@ -255,7 +251,5 @@ onBeforeUnmount(() => {
 
 .selected-item {
   border-right: 3px solid #d23f57;
-
-  /* min-height: 0px; */
 }
 </style>
