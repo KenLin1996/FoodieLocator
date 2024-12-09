@@ -6,18 +6,23 @@
         <v-icon icon="mdi-chevron-right" />
       </template>
     </v-breadcrumbs>
-    <div>
+    <div class="mb-8 d-flex align-center justify-space-between flex-wrap">
       <v-tabs
         v-model="tab"
+        class="mb-2"
         align-tabs="left"
         color="#d23f57"
         slider-color="#d23f57"
-        class="mb-8"
       >
         <v-tab value="option-1"> Delivery </v-tab>
         <v-tab value="option-2"> Dining Out </v-tab>
         <v-tab value="option-3"> Nightlife </v-tab>
       </v-tabs>
+      <!-- <div> -->
+      <v-btn style="background-color: #d23f57; color: white" width="70">
+        CLEAR
+      </v-btn>
+      <!-- </div> -->
     </div>
     <v-row>
       <v-col xl="12" cols="12">
@@ -28,23 +33,80 @@
                 cols="3"
                 md="3"
                 lg="3"
+                class="mdSizeFilter"
                 style="border-right: 1px solid #d9e1e6"
               >
                 <div>
-                  <h6 style="font-size: 14px">Categories</h6>
-                  <v-checkbox
-                    v-model="selectedCategory"
-                    label="Desserts"
-                    value="Desserts"
-                    hide-details
-                  />
+                  <h6 class="mb-2" style="font-size: 14px">Categories</h6>
+                  <template v-for="item in category" :key="item">
+                    <v-checkbox
+                      v-model="selectedCategory"
+                      :label="item"
+                      :value="item"
+                      hide-details
+                    />
+                  </template>
                 </div>
-                <div>d</div>
-                <div>d</div>
-                <div>d</div>
+                <div>
+                  <h6 class="mb-2" style="font-size: 14px">Rate</h6>
+                  <template v-for="item in rate" :key="item">
+                    <v-checkbox
+                      v-model="selectedRate"
+                      :label="item"
+                      :value="item"
+                      hide-details
+                    />
+                  </template>
+                </div>
+                <div>
+                  <h6 class="mb-2" style="font-size: 14px">City</h6>
+                  <template v-for="item in city" :key="item">
+                    <v-checkbox
+                      v-model="selectedCity"
+                      :label="item"
+                      :value="item"
+                      hide-details
+                    />
+                  </template>
+                </div>
+                <div>
+                  <h6 class="mb-2" style="font-size: 14px">Sort By</h6>
+
+                  <v-radio-group v-model="sort">
+                    <v-radio label="Name" value="name" />
+                    <v-radio label="Price" value="price" />
+                  </v-radio-group>
+                </div>
+                <div>
+                  <h6 class="mb-10" style="font-size: 14px">Price Range</h6>
+                  <!-- <template> -->
+                  <v-range-slider
+                    v-model="range"
+                    style="margin: 0px 20px"
+                    step="1"
+                    thumb-label="always"
+                    color="#d23f57"
+                    thumb-color="#d23f57"
+                  />
+                  <!-- </template> -->
+                </div>
               </v-col>
               <v-col cols="12" sm="12" md="9" lg="9">
                 <v-row class="w-100" style="padding: 5px 32px">
+                  <v-col cols="12" class="filterBtn">
+                    <v-btn
+                      style="background-color: #d23f57; color: white"
+                      width="100"
+                    >
+                      FILTER
+                    </v-btn>
+                  </v-col>
+                  <v-col cols="12">
+                    <h5 style="font-size: 18px">
+                      184 Delivery Restaurants in New York
+                    </h5>
+                  </v-col>
+
                   <v-col
                     v-for="(item, index) in menus"
                     :key="index"
@@ -58,20 +120,7 @@
                 </v-row>
               </v-col>
             </v-row>
-            <div>
-              <!-- <v-row>
-                <v-col
-                  v-for="(item, index) in menus"
-                  :key="index"
-                  sm="6"
-                  md="4"
-                  lg="4"
-                  cols="12"
-                >
-                  <ProductCardA :item="item" />
-                </v-col>
-              </v-row> -->
-            </div>
+            <!-- <div /> -->
           </v-tabs-window-item>
         </v-tabs-window>
       </v-col>
@@ -81,8 +130,17 @@
 <script setup>
 import { ref } from "vue";
 import ProductCardA from "@/components/productCard/ProductCardA.vue";
+import { definePage } from "vue-router/auto";
+
+definePage({
+  meta: {
+    title: "Foodie Locator - TwoColumn",
+  },
+});
 
 const selectedCategory = ref([]);
+const selectedRate = ref([]);
+const selectedCity = ref([]);
 
 const items = [
   {
@@ -217,4 +275,42 @@ const menus = [
     to: "/resturant/FoodMenu",
   },
 ];
+
+const category = ref(["Desserts", "Sushi", "Pizza", "Sandwiches", "Baking"]);
+const rate = ref(["4.5 +", "4 +", "3.5 +", "3 +", "Others"]);
+const city = ref(["New York", "Los Angeles", "Chicago", "Boston", "Houston"]);
+const sort = ref("name");
+const range = ref([2, 50]);
 </script>
+
+<style scoped lang="scss">
+::v-deep .v-slider-thumb__label {
+  width: 35px;
+  height: 35px;
+  background-color: #d23f57;
+  border-radius: 50% 50% 50% 0px;
+  transform: translateX(-50%) rotate(-45deg) !important;
+  &::before {
+    display: none;
+  }
+}
+::v-deep .v-slider-thumb__label div {
+  transform: rotate(45deg) !important;
+}
+
+.filterBtn {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  //   ::v-deep .v-slide-group__content {
+  //     display: none;
+  //   }
+  .filterBtn {
+    display: block;
+  }
+  .mdSizeFilter {
+    display: none;
+  }
+}
+</style>
