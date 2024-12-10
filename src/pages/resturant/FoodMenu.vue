@@ -122,9 +122,9 @@
         class="mb-8"
         style="font-size: 14px"
       >
-        <v-tab value="option-1"> Order Online </v-tab>
-        <v-tab value="option-2"> Book a Table </v-tab>
-        <v-tab value="option-3"> Reviews </v-tab>
+        <v-tab value="option-1" class="text-capitalize"> Order Online </v-tab>
+        <v-tab value="option-2" class="text-capitalize"> Book a Table </v-tab>
+        <v-tab value="option-3" class="text-capitalize"> Reviews </v-tab>
       </v-tabs>
 
       <v-tabs-window v-model="tab">

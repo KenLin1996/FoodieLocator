@@ -1,7 +1,8 @@
 <template>
   <v-app>
-    <NavBar v-if="showNavBar" />
-    <v-main>
+    <NavBar v-if="showNavBar" :open="['Dashboards']" />
+    <!-- <NavBar :open="['Dashboards']" /> -->
+    <v-main ref="mainContent">
       <router-view />
     </v-main>
 
@@ -42,7 +43,8 @@ watch(
 // 設置滾動事件監聽
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);
-  handleScroll(); // 初始化頁面滾動狀態，確保第一次進入頁面時處於正確狀態
+  handleScroll();
+  // 初始化頁面滾動狀態，確保第一次進入頁面時處於正確狀態
 });
 
 onBeforeUnmount(() => {

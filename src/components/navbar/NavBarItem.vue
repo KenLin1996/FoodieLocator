@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <v-container>
     <v-row class="d-flex justify-space-between align-center">
       <v-col cols="7">
@@ -31,6 +31,7 @@
           prepend-icon="mdi-cart-outline"
           variant="text"
           :class="showSearch ? 'showSearch' : 'navIconColor'"
+          @click="cartBar = !cartBar"
         >
           (dc)
         </v-btn>
@@ -41,7 +42,7 @@
     </v-row>
   </v-container>
 
-  <!-- ACCOUNT 彈出視窗 -->
+  
   <v-dialog v-model="dialog" max-width="500">
     <v-card>
       <div class="px-3 px-md-10 py-8">
@@ -138,8 +139,39 @@
     </v-card>
   </v-dialog>
 
-  <!-- 購物車側邊欄 -->
-  <!-- 漢堡側邊欄 -->
+  
+  <v-navigation-drawer
+    v-model="cartBar"
+    location="right"
+    temporary
+    :width="260"
+    class="position-fixed"
+    style="z-index: 3444100; top: 0; height: 100%"
+  >
+    <div class="d-flex align-center justify-space-between mt-3 mb-2 px-3">
+      <div class="d-flex align-center">
+        <v-icon icon="mdi-shopping-outline" class="mr-3" />
+        <h4 style="font-size: 20px; color: #757575">Cart</h4>
+      </div>
+      <v-btn
+        icon="mdi-close"
+        variant="text"
+        color="#d23f57"
+        @click="cartBar = !cartBar"
+      />
+    </div>
+    <v-divider />
+    <div class="pa-3 mb-4">dffg</div>
+    <div class="d-flex flex-column pa-2">
+      <v-btn class="w-100 mb-3 text-capitalize" color="#d23f57">
+        Checkout Now ($ 220)
+      </v-btn>
+      <v-btn class="w-100" variant="outlined" color="#d23f57">
+        View Cart
+      </v-btn>
+    </div>
+  </v-navigation-drawer>
+  
 </template>
 <script setup>
 import SearchItem from "../SearchItem.vue";
@@ -149,6 +181,7 @@ const dialog = ref(false);
 const account = ref();
 const visible = ref(false);
 const password = ref();
+const cartBar = ref(false);
 const props = defineProps({
   showSearch: {
     type: Boolean,
@@ -188,4 +221,4 @@ onBeforeUnmount(() => {
     display: none;
   }
 }
-</style>
+</style> -->
