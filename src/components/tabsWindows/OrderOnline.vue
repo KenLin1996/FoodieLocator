@@ -69,20 +69,6 @@ const triggerSideBar = () => {
   }
 };
 
-// const tabs = [
-//   { name: "ALL" },
-//   { name: "Recomended", counts: 4 },
-//   { name: "DPB Special Combos", counts: 1 },
-//   { name: "Chineese Starters", counts: 3 },
-//   { name: "Chinese Main Course", counts: 7 },
-//   { name: "Indian Main Course", counts: 6 },
-//   { name: "Rice & Pulao", counts: 7 },
-//   { name: "Desserts", counts: 1 },
-//   { name: "Soup & wonton", counts: 5 },
-//   { name: "Accompaniment", counts: 4 },
-//   { name: "Biryani", counts: 1 },
-// ];
-
 const tabs = [
   {
     name: "Recomended",

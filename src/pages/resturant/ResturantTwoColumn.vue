@@ -19,7 +19,11 @@
         <v-tab value="option-3"> Nightlife </v-tab>
       </v-tabs>
 
-      <v-btn style="background-color: #d23f57; color: white" width="70">
+      <v-btn
+        style="background-color: #d23f57; color: white"
+        width="70"
+        @click="clear"
+      >
         CLEAR
       </v-btn>
     </div>
@@ -105,16 +109,28 @@
                     </h5>
                   </v-col>
 
-                  <v-col
-                    v-for="(item, index) in menus"
-                    :key="index"
-                    sm="6"
-                    md="4"
-                    lg="4"
-                    cols="12"
-                  >
-                    <ProductCardA :item="item" />
-                  </v-col>
+                  <template v-if="filteredMenus.length > 0">
+                    <v-col
+                      v-for="(item, index) in filteredMenus"
+                      :key="index"
+                      sm="6"
+                      md="4"
+                      lg="4"
+                      cols="12"
+                    >
+                      <ProductCardA :item="item" />
+                    </v-col>
+                  </template>
+                  <template v-else>
+                    <v-col>
+                      <p
+                        class="text-center mt-5"
+                        style="font-size: 32px; color: #757575"
+                      >
+                        No products match the criteria.
+                      </p>
+                    </v-col>
+                  </template>
                 </v-row>
               </v-col>
             </v-row>
@@ -125,7 +141,7 @@
   </v-container>
 </template>
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import ProductCardA from "@/components/productCard/ProductCardA.vue";
 import { definePage } from "vue-router/auto";
 
@@ -271,6 +287,20 @@ const menus = [
     },
     to: "/resturant/FoodMenu",
   },
+  {
+    img: "https://d-mars.com/wp-content/uploads/2024/05/iStock-172410532-1.jpg",
+    name: "Pecan Pie",
+    rate: 2,
+    price: 45,
+    category: "Desserts",
+    city: "Houston",
+    time: "15 - 20",
+    discount: {
+      hasDiscount: true,
+      value: 30,
+    },
+    to: "/resturant/FoodMenu",
+  },
 ];
 
 const category = ref(["Desserts", "Sushi", "Pizza", "Sandwiches", "Baking"]);
@@ -278,6 +308,48 @@ const rate = ref(["4.5 +", "4 +", "3.5 +", "3 +", "Others"]);
 const city = ref(["New York", "Los Angeles", "Chicago", "Boston", "Houston"]);
 const sort = ref("name");
 const range = ref([2, 50]);
+
+const clear = () => {
+  selectedCategory.value = [];
+  selectedRate.value = [];
+  selectedCity.value = [];
+  range.value = [2, 50];
+  sort.value = "name";
+};
+
+// 測試
+// 依據選擇條件過濾菜單
+const filteredMenus = computed(() => {
+  return menus
+    .filter((menu) => {
+      const isCategoryMatched =
+        selectedCategory.value.length === 0 ||
+        selectedCategory.value.includes(menu.category);
+      const isRateMatched =
+        selectedRate.value.length === 0 ||
+        (selectedRate.value.includes("4.5 +") && menu.rate >= 4.5) ||
+        (selectedRate.value.includes("4 +") &&
+          menu.rate >= 4 &&
+          menu.rate < 4.5) ||
+        (selectedRate.value.includes("3.5 +") && menu.rate >= 3.5) ||
+        (selectedRate.value.includes("3 +") && menu.rate >= 3);
+      const isCityMatched =
+        selectedCity.value.length === 0 ||
+        selectedCity.value.includes(menu.city);
+      const isPriceInRange =
+        menu.price >= range.value[0] && menu.price <= range.value[1];
+
+      return (
+        isCategoryMatched && isRateMatched && isCityMatched && isPriceInRange
+      );
+    })
+    .sort((a, b) => {
+      if (sort.value === "price") {
+        return a.price - b.price;
+      }
+      return a.name.localeCompare(b.name);
+    });
+});
 </script>
 
 <style scoped lang="scss">
@@ -300,9 +372,6 @@ const range = ref([2, 50]);
 }
 
 @media (max-width: 960px) {
-  //   ::v-deep .v-slide-group__content {
-  //     display: none;
-  //   }
   .filterBtn {
     display: block;
   }

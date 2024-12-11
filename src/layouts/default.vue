@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <NavBar v-if="showNavBar" :open="['Dashboards']" />
-    <!-- <NavBar :open="['Dashboards']" /> -->
+
     <v-main ref="mainContent">
       <router-view />
     </v-main>
@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import NavBar from "@/components/navbar/NavBar.vue";
+import NavBar from "@/components/NavBar.vue";
 import { ref, onMounted, onBeforeUnmount, watch } from "vue";
 import { useRoute } from "vue-router";
 

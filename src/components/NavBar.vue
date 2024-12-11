@@ -1,6 +1,5 @@
 <template>
   <v-app-bar class="w-100 position-fixed" scroll-behavior="elevate">
-    <!-- <NavBarItem /> -->
     <v-container>
       <v-row class="d-flex justify-space-between align-center">
         <v-col cols="7">
@@ -171,53 +170,63 @@
     >
       <!-- 購物車列表 -->
       <div>
-        <template v-for="item in cartStore.items" :key="item">
-          <div
-            class="pa-3 mb-4 d-flex align-center justify-space-between w-100"
-          >
-            <div class="d-flex align-center mr-1">
-              <div class="mr-3 text-center">
+        <template v-if="cartStore.items.length > 0">
+          <template v-for="item in cartStore.items" :key="item">
+            <div
+              class="pa-3 mb-4 d-flex align-center justify-space-between w-100"
+            >
+              <div class="d-flex align-center mr-1">
+                <div class="mr-3 text-center">
+                  <v-btn
+                    icon="mdi-plus"
+                    density="compact"
+                    color="#d23f57"
+                    variant="outlined"
+                    @click="addCount(item)"
+                  />
+                  <!-- <p class="my-1">1</p> -->
+                  <p class="my-1">
+                    {{ item.quantity }}
+                  </p>
+                  <v-btn
+                    icon="mdi-minus"
+                    density="compact"
+                    color="#d23f57"
+                    variant="outlined"
+                    @click="decreaseCount(item)"
+                  />
+                </div>
+                <v-avatar class="mr-4 rounded" size="64">
+                  <v-img :src="item.img" />
+                </v-avatar>
+                <div class="d-flex flex-column">
+                  <h5
+                    class="text-truncate"
+                    style="font-size: 16px; width: 110px"
+                  >
+                    {{ item.name }}
+                  </h5>
+                  <p style="font-size: 12px">$530 x 1</p>
+                  <h5 style="color: #d23f57; font-size: 16px">
+                    ${{ item.price }}
+                  </h5>
+                </div>
+              </div>
+              <div>
                 <v-btn
-                  icon="mdi-plus"
-                  density="compact"
-                  color="#d23f57"
-                  variant="outlined"
-                  @click="addCount(item)"
-                />
-                <!-- <p class="my-1">1</p> -->
-                <p class="my-1">
-                  {{ item.quantity }}
-                </p>
-                <v-btn
-                  icon="mdi-minus"
-                  density="compact"
-                  color="#d23f57"
-                  variant="outlined"
-                  @click="decreaseCount(item)"
+                  icon="mdi-close"
+                  variant="text"
+                  color="#000"
+                  @click="removeItem(item)"
                 />
               </div>
-              <v-avatar class="mr-4 rounded" size="64">
-                <v-img :src="item.img" />
-              </v-avatar>
-              <div class="d-flex flex-column">
-                <h5 class="text-truncate" style="font-size: 16px; width: 110px">
-                  {{ item.name }}
-                </h5>
-                <p style="font-size: 12px">$530 x 1</p>
-                <h5 style="color: #d23f57; font-size: 16px">
-                  ${{ item.price }}
-                </h5>
-              </div>
             </div>
-            <div>
-              <v-btn
-                icon="mdi-close"
-                variant="text"
-                color="#000"
-                @click="removeItem(item)"
-              />
-            </div>
-          </div>
+          </template>
+        </template>
+        <template v-else>
+          <p class="pa-3 text-center mt-4" style="font: 16px; color: #757575">
+            The shopping cart is currently empty.
+          </p>
         </template>
       </div>
       <!-- 按鈕 -->
@@ -293,7 +302,7 @@
   </v-navigation-drawer>
 </template>
 <script setup>
-import SearchItem from "../SearchItem.vue";
+import SearchItem from "./SearchItem.vue";
 import { useCartStore } from "@/stores/cart";
 import { ref, defineProps, watch } from "vue";
 
