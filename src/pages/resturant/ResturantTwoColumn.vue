@@ -14,9 +14,9 @@
         color="#d23f57"
         slider-color="#d23f57"
       >
-        <v-tab value="option-1"> Delivery </v-tab>
-        <v-tab value="option-2"> Dining Out </v-tab>
-        <v-tab value="option-3"> Nightlife </v-tab>
+        <v-tab value="option-1" class="text-capitalize"> Delivery </v-tab>
+        <v-tab value="option-2" class="text-capitalize"> Dining Out </v-tab>
+        <v-tab value="option-3" class="text-capitalize"> Nightlife </v-tab>
       </v-tabs>
 
       <v-btn
@@ -99,6 +99,7 @@
                     <v-btn
                       style="background-color: #d23f57; color: white"
                       width="100"
+                      @click="filterBtn = !filterBtn"
                     >
                       FILTER
                     </v-btn>
@@ -139,9 +140,71 @@
       </v-col>
     </v-row>
   </v-container>
+
+  <!-- 篩選側邊欄 -->
+  <v-navigation-drawer v-model="filterBtn">
+    <div style="padding: 16px">
+      <!-- 分隔一下1 -->
+      <div>
+        <h6 class="mb-2" style="font-size: 14px">Categories</h6>
+        <template v-for="item in category" :key="item">
+          <v-checkbox
+            v-model="selectedCategory"
+            :label="item"
+            :value="item"
+            hide-details
+          />
+        </template>
+      </div>
+      <div>
+        <h6 class="mb-2" style="font-size: 14px">Rate</h6>
+        <template v-for="item in rate" :key="item">
+          <v-checkbox
+            v-model="selectedRate"
+            :label="item"
+            :value="item"
+            hide-details
+          />
+        </template>
+      </div>
+      <div>
+        <h6 class="mb-2" style="font-size: 14px">City</h6>
+        <template v-for="item in city" :key="item">
+          <v-checkbox
+            v-model="selectedCity"
+            :label="item"
+            :value="item"
+            hide-details
+          />
+        </template>
+      </div>
+      <div>
+        <h6 class="mb-2" style="font-size: 14px">Sort By</h6>
+
+        <v-radio-group v-model="sort">
+          <v-radio label="Name" value="name" />
+          <v-radio label="Price" value="price" />
+        </v-radio-group>
+      </div>
+      <div>
+        <h6 class="mb-10" style="font-size: 14px">Price Range</h6>
+
+        <v-range-slider
+          v-model="range"
+          style="margin: 0px 20px"
+          step="1"
+          thumb-label="always"
+          color="#d23f57"
+          thumb-color="#d23f57"
+        />
+      </div>
+
+      <!-- 分隔一下2 -->
+    </div>
+  </v-navigation-drawer>
 </template>
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 import ProductCardA from "@/components/productCard/ProductCardA.vue";
 import { definePage } from "vue-router/auto";
 
@@ -154,6 +217,8 @@ definePage({
 const selectedCategory = ref([]);
 const selectedRate = ref([]);
 const selectedCity = ref([]);
+
+const filterBtn = ref(false);
 
 const items = [
   {
@@ -349,6 +414,24 @@ const filteredMenus = computed(() => {
       }
       return a.name.localeCompare(b.name);
     });
+});
+
+// 設置根據螢幕寬度來控制 drawer 的邏輯
+const updateDrawer = () => {
+  // 當螢幕寬度大於等於 960px 時，設置 drawer 隱藏
+  if (window.innerWidth > 960) {
+    filterBtn.value = false;
+  }
+};
+
+onMounted(() => {
+  updateDrawer();
+  // 監聽螢幕尺寸變化
+  window.addEventListener("resize", updateDrawer);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", updateDrawer);
 });
 </script>
 

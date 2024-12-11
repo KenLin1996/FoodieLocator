@@ -6,7 +6,6 @@
       background-size: cover;
     "
   >
-    <!-- <NavBarItem :show-search="showSearch" /> -->
     <v-container>
       <v-row class="d-flex justify-space-between align-center">
         <v-col cols="7">
@@ -21,7 +20,6 @@
                   />
                 </router-link>
               </v-avatar>
-              <!-- <SearchItem v-if="isLargeScreen && showSearch" /> -->
             </v-col>
           </v-row>
         </v-col>
@@ -35,19 +33,22 @@
             <span class="hidden-text">ACCOUNT</span>
           </v-btn>
           <v-btn
-            prepend-icon="mdi-cart-outline"
+            stacked
             variant="text"
+            height="36"
+            :class="showSearch ? 'showSearch' : 'navIconColor'"
             style="color: #fff"
             @click="cartBar = !cartBar"
           >
-            {{ cartStore.items.length }}
+            <v-badge color="error" :content="cartStore.items.length">
+              <v-icon>mdi-cart-outline</v-icon>
+            </v-badge>
           </v-btn>
           <v-app-bar-nav-icon style="color: #fff" @click="ham = !ham" />
         </v-col>
       </v-row>
     </v-container>
 
-    <!-- 分隔一下 -->
     <v-container>
       <div class="mt-15">
         <v-row>
@@ -572,7 +573,7 @@ const submit = () => {
   password.value = "";
 };
 
-// const showSearch = ref(false);
+const showSearch = ref(false);
 const isLargeScreen = ref(window.innerWidth >= 960);
 const lifestyles = [
   {

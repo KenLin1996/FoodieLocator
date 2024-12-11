@@ -56,10 +56,10 @@
 <script setup>
 import { ref, inject } from "vue";
 import ProductCardC from "../productCard/ProductCardC.vue";
-import { useProductStore } from "@/stores/product.js";
+// import { useProductStore } from "@/stores/product.js";
 
-const productStore = useProductStore();
-const { menus } = productStore;
+// const productStore = useProductStore();
+// const { menus } = productStore;
 const orderTab = ref("option-0");
 
 const openSideBar = inject("openSideBar");

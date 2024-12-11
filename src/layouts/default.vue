@@ -7,6 +7,22 @@
     </v-main>
 
     <Footer />
+    <v-btn
+      icon="mdi-chevron-up"
+      elevation="18"
+      style="
+        position: fixed;
+        top: 92.5vh;
+        right: 16px;
+        z-index: 3000;
+        width: 40px;
+        height: 40px;
+        border-radius: 50% 50%;
+        background-color: #d23f57;
+        color: white;
+      "
+      @click="scrollToTop"
+    />
   </v-app>
 </template>
 
@@ -50,4 +66,11 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener("scroll", handleScroll);
 });
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // 平滑滾動
+  });
+};
 </script>
