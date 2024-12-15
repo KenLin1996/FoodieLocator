@@ -106,7 +106,7 @@
                 density="default"
                 variant="text"
                 style="color: #fff; background-color: #d23f57"
-                to="/resturant/ResturantTwoColumn"
+                to="/restaurant/RestaurantTwoColumn"
               >
                 Search
               </v-btn>
@@ -563,9 +563,9 @@ const dashboards = ref([
   "Bookmarks",
 ]);
 const restaurants = ref([
-  { title: "Food Menu", to: "/resturant/FoodMenu" },
-  { title: "Resturant Two Column", to: "/resturant/ResturantTwoColumn" },
-  { title: "Search Resturant", to: "/" },
+  { title: "Food Menu", to: "/restaurant/FoodMenu" },
+  { title: "Restaurant Two Column", to: "/restaurant/RestaurantTwoColumn" },
+  { title: "Search Restaurant", to: "/" },
 ]);
 
 const submit = () => {
@@ -580,27 +580,27 @@ const lifestyles = [
     img: "https://foodhub-nuxt.vercel.app/_nuxt/img/15.15c95d2.jpg",
     name: "Order Food Online",
     showLifestyle: true,
-    to: "/resturant/FoodMenu",
+    to: "/restaurant/FoodMenu",
   },
   {
     img: "https://foodhub-nuxt.vercel.app/_nuxt/img/16.bbc24cb.jpg",
     name: "Go Out For Meal",
     showLifestyle: true,
-    to: "/resturant/FoodMenu",
+    to: "/restaurant/FoodMenu",
   },
   {
     img: "https://foodhub-nuxt.vercel.app/_nuxt/img/17.3634737.jpg",
     name: "Nightlife & Clubs",
     showLifestyle: true,
 
-    to: "/resturant/FoodMenu",
+    to: "/restaurant/FoodMenu",
   },
   {
     img: "https://foodhub-nuxt.vercel.app/_nuxt/img/18.2a12c1e.jpg",
     name: "Pro Membership",
     showLifestyle: true,
 
-    to: "/resturant/FoodMenu",
+    to: "/restaurant/FoodMenu",
   },
 ];
 
@@ -635,32 +635,32 @@ const cuisines = [
   {
     img: "https://foodhub-nuxt.vercel.app/_nuxt/img/9.1c1a4aa.png",
     name: "Italian",
-    to: "/resturant/FoodMenu",
+    to: "/restaurant/FoodMenu",
   },
   {
     img: "https://foodhub-nuxt.vercel.app/_nuxt/img/10.4b83261.png",
     name: "Chinesse",
-    to: "/resturant/FoodMenu",
+    to: "/restaurant/FoodMenu",
   },
   {
     img: "https://foodhub-nuxt.vercel.app/_nuxt/img/11.53f677b.png",
     name: "Japanesse",
-    to: "/resturant/FoodMenu",
+    to: "/restaurant/FoodMenu",
   },
   {
     img: "https://foodhub-nuxt.vercel.app/_nuxt/img/12.95a2711.png",
     name: "Indian",
-    to: "/resturant/FoodMenu",
+    to: "/restaurant/FoodMenu",
   },
   {
     img: "https://foodhub-nuxt.vercel.app/_nuxt/img/13.b85d0c1.png",
     name: "Thai Food",
-    to: "/resturant/FoodMenu",
+    to: "/restaurant/FoodMenu",
   },
   {
     img: "https://foodhub-nuxt.vercel.app/_nuxt/img/14.05cff0f.png",
     name: "Mexican",
-    to: "/resturant/FoodMenu",
+    to: "/restaurant/FoodMenu",
   },
 ];
 
@@ -677,7 +677,7 @@ const menus = [
       hasDiscount: true,
       value: 65,
     },
-    to: "/resturant/FoodMenu",
+    to: "/restaurant/FoodMenu",
   },
   {
     img: "https://foodhub-nuxt.vercel.app/_nuxt/img/16.bbc24cb.jpg",
@@ -691,7 +691,7 @@ const menus = [
       hasDiscount: true,
       value: 60,
     },
-    to: "/resturant/FoodMenu",
+    to: "/restaurant/FoodMenu",
   },
   {
     img: "https://t3.ftcdn.net/jpg/09/46/66/06/360_F_946660682_g6fHbVm33zRMHe9H3f0WDoi3fiupcKRW.jpg",
@@ -705,7 +705,7 @@ const menus = [
       hasDiscount: false,
       value: 30,
     },
-    to: "/resturant/FoodMenu",
+    to: "/restaurant/FoodMenu",
   },
   {
     img: "https://www.mystateline.com/wp-content/uploads/sites/17/2023/02/AdobeStock_61641020_Preview.jpeg?w=1280",
@@ -719,7 +719,7 @@ const menus = [
       hasDiscount: true,
       value: 55,
     },
-    to: "/resturant/FoodMenu",
+    to: "/restaurant/FoodMenu",
   },
   {
     img: "https://static.vecteezy.com/system/resources/previews/027/537/012/non_2x/a-boston-cream-pie-with-chocolate-icing-on-a-plate-ai-generated-free-photo.jpeg",
@@ -733,7 +733,7 @@ const menus = [
       hasDiscount: true,
       value: 30,
     },
-    to: "/resturant/FoodMenu",
+    to: "/restaurant/FoodMenu",
   },
   {
     img: "https://img.freepik.com/premium-photo/kolaches-filled-with-seasonal-fruits-yummy-delicious-kolaches-food-image-photography_1295756-183696.jpg",
@@ -747,7 +747,7 @@ const menus = [
       hasDiscount: false,
       value: 30,
     },
-    to: "/resturant/FoodMenu",
+    to: "/restaurant/FoodMenu",
   },
   {
     img: "https://img.freepik.com/premium-photo/chicagostyle-deep-dish-pizza-thick-crust-with-cheese-chunky-tomato-sauce_818261-25460.jpg",
@@ -761,7 +761,7 @@ const menus = [
       hasDiscount: false,
       value: 30,
     },
-    to: "/resturant/FoodMenu",
+    to: "/restaurant/FoodMenu",
   },
   {
     img: "https://d-mars.com/wp-content/uploads/2024/05/iStock-172410532-1.jpg",
@@ -775,7 +775,7 @@ const menus = [
       hasDiscount: true,
       value: 30,
     },
-    to: "/resturant/FoodMenu",
+    to: "/restaurant/FoodMenu",
   },
 ];
 

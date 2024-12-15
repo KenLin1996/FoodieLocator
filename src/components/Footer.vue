@@ -101,27 +101,27 @@ const citys = [
   {
     name: "New York",
     count: `（26 places）`,
-    to: "/resturant/FoodMenu",
+    to: "/restaurant/FoodMenu",
   },
   {
     name: "Los Angeles",
     count: `（14 places）`,
-    to: "/resturant/FoodMenu",
+    to: "/restaurant/FoodMenu",
   },
   {
     name: "Chicago",
     count: `（10 places）`,
-    to: "/resturant/FoodMenu",
+    to: "/restaurant/FoodMenu",
   },
   {
     name: "Boston",
     count: `（20 places）`,
-    to: "/resturant/FoodMenu",
+    to: "/restaurant/FoodMenu",
   },
   {
     name: "Houston",
     count: `（6 places）`,
-    to: "/resturant/FoodMenu",
+    to: "/restaurant/FoodMenu",
   },
 ];
 

@@ -81,7 +81,7 @@
             style="font-size: 16px; margin-right: 8px"
           />The Dorothy Ross Friedman Residence, NY, US -
           <router-link
-            to="/resturant/FoodMenu"
+            to="/restaurant/FoodMenu"
             style="text-decoration: underline; color: #757575"
           >
             Show Map
@@ -95,7 +95,7 @@
             icon="mdi-clock-outline"
             style="font-size: 16px; margin-right: 8px"
           />
-          <router-link to="/resturant/FoodMenu" style="color: #d23f57">
+          <router-link to="/restaurant/FoodMenu" style="color: #d23f57">
             Open Now
           </router-link>
           &ensp;- Sun - Mon: 9am - 10pm
@@ -105,7 +105,7 @@
           style="color: #757575; font-size: 14px"
         >
           <v-icon icon="mdi-earth" style="font-size: 16px; margin-right: 8px" />
-          <router-link to="/resturant/FoodMenu" style="color: #757575">
+          <router-link to="/restaurant/FoodMenu" style="color: #757575">
             www.starbucks.com
           </router-link>
         </div>
@@ -181,7 +181,7 @@ definePage({
   },
 });
 
-const tab = ref("tab-1");
+const tab = ref("option-1");
 
 const items = [
   {
@@ -195,9 +195,9 @@ const items = [
     href: "/",
   },
   {
-    title: "Resturants",
+    title: "Restaurants",
     disabled: true,
-    href: "/resturant/FoodMenu",
+    href: "/restaurant/FoodMenu",
   },
 ];
 

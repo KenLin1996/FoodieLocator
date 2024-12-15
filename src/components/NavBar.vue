@@ -323,9 +323,9 @@ const dashboards = ref([
   "Bookmarks",
 ]);
 const restaurants = ref([
-  { title: "Food Menu", to: "/resturant/FoodMenu" },
-  { title: "Resturant Two Column", to: "/resturant/ResturantTwoColumn" },
-  { title: "Search Resturant", to: "/" },
+  { title: "Food Menu", to: "/restaurant/FoodMenu" },
+  { title: "Restaurant Two Column", to: "/restaurant/RestaurantTwoColumn" },
+  { title: "Search Restaurant", to: "/" },
 ]);
 
 const props = defineProps({
