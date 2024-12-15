@@ -277,7 +277,7 @@
   </div>
 
   <!-- ACCOUNT 彈出視窗 -->
-  <v-dialog v-model="dialog" max-width="500">
+  <v-dialog v-model="dialog" max-width="500" scroll-strategy="none">
     <v-card>
       <div class="px-3 px-md-10 py-8">
         <h3 class="mb-2 text-center">Welcome To Foodie Locator</h3>

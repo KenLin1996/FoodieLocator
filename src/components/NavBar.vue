@@ -29,15 +29,12 @@
             <span class="hidden-text">ACCOUNT</span>
           </v-btn>
           <v-btn
-            stacked
+            prepend-icon="mdi-cart-outline"
             variant="text"
-            height="36"
             :class="showSearch ? 'showSearch' : 'navIconColor'"
             @click="cartBar = !cartBar"
           >
-            <v-badge color="error" :content="cartStore.items.length">
-              <v-icon>mdi-cart-outline</v-icon>
-            </v-badge>
+            {{ cartStore.items.length }}
           </v-btn>
           <v-app-bar-nav-icon
             :class="showSearch ? 'showSearch' : 'navIconColor'"
@@ -49,7 +46,7 @@
   </v-app-bar>
 
   <!-- ACCOUNT 彈出視窗 -->
-  <v-dialog v-model="dialog" max-width="500">
+  <v-dialog v-model="dialog" max-width="500" scroll-strategy="none">
     <v-card>
       <div class="px-3 px-md-10 py-8">
         <h3 class="mb-2 text-center">Welcome To Foodie Locator</h3>
