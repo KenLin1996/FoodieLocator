@@ -29,12 +29,15 @@
             <span class="hidden-text">ACCOUNT</span>
           </v-btn>
           <v-btn
-            prepend-icon="mdi-cart-outline"
+            stacked
             variant="text"
+            height="36"
             :class="showSearch ? 'showSearch' : 'navIconColor'"
             @click="cartBar = !cartBar"
           >
-            {{ cartStore.items.length }}
+            <v-badge color="error" :content="cartStore.items.length">
+              <v-icon>mdi-cart-outline</v-icon>
+            </v-badge>
           </v-btn>
           <v-app-bar-nav-icon
             :class="showSearch ? 'showSearch' : 'navIconColor'"
